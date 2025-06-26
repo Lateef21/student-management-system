@@ -1,6 +1,6 @@
-package com.lateef.SudentManagementSystem.service;
+package com.lateef.StudentManagementSystem.service;
 
-import com.lateef.SudentManagementSystem.model.Student;
+import com.lateef.StudentManagementSystem.model.Student;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

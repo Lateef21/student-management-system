@@ -1,4 +1,4 @@
-package com.lateef.SudentManagementSystem.controller;
+package com.lateef.StudentManagementSystem.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

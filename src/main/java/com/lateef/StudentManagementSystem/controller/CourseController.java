@@ -1,7 +1,7 @@
-package com.lateef.SudentManagementSystem.controller;
+package com.lateef.StudentManagementSystem.controller;
 
-import com.lateef.SudentManagementSystem.model.Course;
-import com.lateef.SudentManagementSystem.service.CourseService;
+import com.lateef.StudentManagementSystem.model.Course;
+import com.lateef.StudentManagementSystem.service.CourseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
