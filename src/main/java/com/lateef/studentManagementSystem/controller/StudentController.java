@@ -37,4 +37,15 @@ public class StudentController {
             return ResponseEntity.status(404).body("Student not found.");
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateStudent(@PathVariable("id") String id, @RequestBody Student updatedStudent) {
+        Student result = studentService.updateStudent(id, updatedStudent);
+        if (result != null) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.status(404).body("Student not found.");
+        }
+    }
+
 }

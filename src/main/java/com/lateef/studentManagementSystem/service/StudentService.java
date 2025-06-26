@@ -27,4 +27,17 @@ public class StudentService {
     public boolean deleteStudent(String studentId) {
         return students.removeIf(student -> student.getStudentId().equals(studentId));
     }
+
+    public Student updateStudent(String studentId, Student updatedStudent) {
+        for (Student student : students) {
+            if (student.getStudentId().equalsIgnoreCase(studentId)) {
+                student.setFullName(updatedStudent.getFullName());
+                student.setAge(updatedStudent.getAge());
+                student.setCourse(updatedStudent.getCourse());
+                return student;
+            }
+        }
+        return null; // Or throw exception
+    }
+
 }
