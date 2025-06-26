@@ -1,4 +1,4 @@
-package com.lateef.student_management_system;
+package com.lateef.studentManagementSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

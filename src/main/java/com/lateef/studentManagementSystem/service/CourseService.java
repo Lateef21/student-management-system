@@ -1,0 +1,21 @@
+package com.lateef.studentManagementSystem.service;
+
+import com.lateef.studentManagementSystem.model.Course;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class CourseService {
+    private final List<Course> courses = new ArrayList<Course>();
+
+    public Course createCourse(Course course) {
+        courses.add(course);
+        return course;
+    }
+
+    public ArrayList<Course> listCourses() {
+        return new ArrayList<>(courses);
+    }
+}

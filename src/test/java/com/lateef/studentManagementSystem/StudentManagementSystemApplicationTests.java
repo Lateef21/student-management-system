@@ -1,4 +1,4 @@
-package com.lateef.student_management_system;
+package com.lateef.studentManagementSystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
