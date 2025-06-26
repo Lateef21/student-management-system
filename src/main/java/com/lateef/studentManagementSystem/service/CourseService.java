@@ -18,4 +18,9 @@ public class CourseService {
     public ArrayList<Course> listCourses() {
         return new ArrayList<>(courses);
     }
+
+    public boolean deleteCourse(String code) {
+        return courses.removeIf(course -> course.getCode().equalsIgnoreCase(code));
+    }
+
 }

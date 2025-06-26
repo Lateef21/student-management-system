@@ -18,4 +18,8 @@ public class Course {
 
     public Course() {
     }
+
+    public String getCode() {
+        return code;
+    }
 }

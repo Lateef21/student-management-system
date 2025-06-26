@@ -29,6 +29,14 @@ public class CourseController {
         return ResponseEntity.ok(result);
     }
 
-
+    @DeleteMapping("/{code}")
+    public ResponseEntity<String> deleteCourse(@PathVariable String code) {
+        boolean deleted = courseService.deleteCourse(code);
+        if (deleted) {
+            return ResponseEntity.ok("Course deleted successfully.");
+        } else {
+            return ResponseEntity.status(404).body("Course not found.");
+        }
+    }
 }
 
