@@ -17,13 +17,13 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/course", method = RequestMethod.POST)
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         Course result = courseService.createCourse(course);
         return ResponseEntity.ok(result);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/course", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Course>> listCourses() {
         ArrayList<Course> result = courseService.listCourses();
         return ResponseEntity.ok(result);
@@ -39,15 +39,6 @@ public class CourseController {
         }
     }
 
-    @PutMapping("/{code}")
-    public ResponseEntity<?> updateCourse(@PathVariable String code, @RequestBody Course updatedCourse) {
-        Course result = courseService.updateCourse(code, updatedCourse);
-        if (result != null) {
-            return ResponseEntity.ok(result);
-        } else {
-            return ResponseEntity.status(404).body("Course not found.");
-        }
-    }
 
 }
 

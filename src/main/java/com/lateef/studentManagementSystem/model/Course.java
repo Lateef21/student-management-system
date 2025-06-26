@@ -23,6 +23,4 @@ public class Course {
         return code;
     }
 
-    public void setCode(String code) {
-    }
 }
