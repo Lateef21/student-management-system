@@ -12,12 +12,6 @@ public class AppController {
         System.out.println("Welcome to My Application");
         return "Welcome to My Application";
     }
-//
-//    @RequestMapping("/")
-//    public String student(){
-//        System.out.println("Enter Student name" + student());
-//        return student();
-//    }
 
     public String course(){
         System.out.println("Enter Course name" + course());

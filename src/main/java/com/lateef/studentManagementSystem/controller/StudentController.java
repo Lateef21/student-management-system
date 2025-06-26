@@ -27,4 +27,14 @@ public class StudentController {
         ArrayList<Student> result = studentService.listStudents();
         return ResponseEntity.ok(result);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteStudent(@PathVariable("id") String studentId) {
+        boolean deleted = studentService.deleteStudent(studentId);
+        if (deleted) {
+            return ResponseEntity.ok("Student deleted successfully.");
+        } else {
+            return ResponseEntity.status(404).body("Student not found.");
+        }
+    }
 }

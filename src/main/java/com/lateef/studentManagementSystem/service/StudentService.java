@@ -23,4 +23,8 @@ public class StudentService {
     public ArrayList<Student> listStudents() {
         return students;
     }
+
+    public boolean deleteStudent(String studentId) {
+        return students.removeIf(student -> student.getStudentId().equals(studentId));
+    }
 }

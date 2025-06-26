@@ -28,5 +28,7 @@ public class CourseController {
         ArrayList<Course> result = courseService.listCourses();
         return ResponseEntity.ok(result);
     }
+
+
 }
 
