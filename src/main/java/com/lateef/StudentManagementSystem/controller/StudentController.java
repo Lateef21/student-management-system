@@ -32,7 +32,7 @@ public class StudentController {
     public ResponseEntity<String> deleteStudent(@PathVariable("id") String studentId) {
         boolean deleted = studentService.deleteStudent(studentId);
         if (deleted) {
-            return ResponseEntity.ok(" A Student has been deleted");
+            return ResponseEntity.ok("Student deleted");
         } else {
             return ResponseEntity.status(404).body("Student not found.");
         }

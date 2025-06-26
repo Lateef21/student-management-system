@@ -33,7 +33,7 @@ public class CourseController {
     public ResponseEntity<String> deleteCourse(@PathVariable String code) {
         boolean deleted = courseService.deleteCourse(code);
         if (deleted) {
-            return ResponseEntity.ok("Course deleted successfully.");
+            return ResponseEntity.ok("Course deleted");
         } else {
             return ResponseEntity.status(404).body("Course not found.");
         }
