@@ -37,7 +37,7 @@ public class StudentService {
                 return student;
             }
         }
-        return null; // Or throw exception
+        return null;
     }
 
 }

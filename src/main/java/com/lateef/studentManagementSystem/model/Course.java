@@ -22,4 +22,7 @@ public class Course {
     public String getCode() {
         return code;
     }
+
+    public void setCode(String code) {
+    }
 }

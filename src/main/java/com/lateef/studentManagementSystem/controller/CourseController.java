@@ -38,5 +38,16 @@ public class CourseController {
             return ResponseEntity.status(404).body("Course not found.");
         }
     }
+
+    @PutMapping("/{code}")
+    public ResponseEntity<?> updateCourse(@PathVariable String code, @RequestBody Course updatedCourse) {
+        Course result = courseService.updateCourse(code, updatedCourse);
+        if (result != null) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.status(404).body("Course not found.");
+        }
+    }
+
 }
 
