@@ -1,4 +1,4 @@
-package com.lateef.studentManagementSystem.model;
+package com.lateef.SudentManagementSystem.model;
 
 import java.util.ArrayList;
 

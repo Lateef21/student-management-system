@@ -1,7 +1,7 @@
-package com.lateef.studentManagementSystem.controller;
+package com.lateef.SudentManagementSystem.controller;
 
-import com.lateef.studentManagementSystem.model.Student;
-import com.lateef.studentManagementSystem.service.StudentService;
+import com.lateef.SudentManagementSystem.model.Student;
+import com.lateef.SudentManagementSystem.service.StudentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
