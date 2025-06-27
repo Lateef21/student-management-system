@@ -17,7 +17,7 @@ public class Course {
     @Min(value = 1, message = "Cannot be less than 1 Unit")
     private int unit;
 
-    @NotNull(message = "Course Code is Required")
+    @NotBlank(message = "Course Code is Required")
     private String code;
     private ArrayList<Student> students;
 
