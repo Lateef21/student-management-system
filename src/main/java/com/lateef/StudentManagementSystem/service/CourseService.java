@@ -26,7 +26,7 @@ public class CourseService {
     public Course updateCourse(String code, Course updatedCourse) {
         for (Course course : courses) {
             if (course.getCode().equalsIgnoreCase(code)) {
-                course.setname(updatedCourse.getName());
+                course.setName(updatedCourse.getName());
                 course.setCode(updatedCourse.getCode());
                 return course;
             }

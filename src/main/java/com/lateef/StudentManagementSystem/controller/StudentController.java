@@ -16,13 +16,13 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         Student result = studentService.createStudent(student);
         return ResponseEntity.ok(result);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Student>> listStudents() {
         ArrayList<Student> result = studentService.listStudents();
         return ResponseEntity.ok(result);
@@ -47,5 +47,6 @@ public class StudentController {
             return ResponseEntity.status(404).body("Student not found.");
         }
     }
+
 
 }

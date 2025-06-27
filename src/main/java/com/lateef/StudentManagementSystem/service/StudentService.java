@@ -33,11 +33,11 @@ public class StudentService {
             if (student.getStudentId().equalsIgnoreCase(studentId)) {
                 student.setFullName(updatedStudent.getFullName());
                 student.setAge(updatedStudent.getAge());
-                student.setCourse(updatedStudent.getCourse());
                 return student;
             }
         }
         return null;
     }
+
 
 }
