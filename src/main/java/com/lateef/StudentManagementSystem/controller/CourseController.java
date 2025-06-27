@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-@RequestMapping
-@RestController("/course")
+@RestController
+@RequestMapping("/course")
 public class CourseController {
+
 
     private final CourseService courseService;
 

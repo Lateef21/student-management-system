@@ -2,6 +2,7 @@ package com.lateef.StudentManagementSystem.controller;
 
 import com.lateef.StudentManagementSystem.model.Student;
 import com.lateef.StudentManagementSystem.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class StudentController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> createStudent(@Valid @RequestBody Student student) {
         Student result = studentService.createStudent(student);
         return ResponseEntity.ok(result);
     }
