@@ -1,13 +1,23 @@
 package com.lateef.StudentManagementSystem.model;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.ArrayList;
 
 public class Course {
+
+    @NotBlank(message = "Full name is required")
     private String name;
     private final String courseId;
+
+    @NotNull(message = "Unit is required")
+    @Min(value = 1, message = "Cannot be less than 1 Unit")
     private int unit;
+
+    @NotNull(message = "Course Code is Required")
     private String code;
     private ArrayList<Student> students;
 

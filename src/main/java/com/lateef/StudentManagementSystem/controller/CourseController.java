@@ -2,6 +2,7 @@ package com.lateef.StudentManagementSystem.controller;
 
 import com.lateef.StudentManagementSystem.model.Course;
 import com.lateef.StudentManagementSystem.service.CourseService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/course", method = RequestMethod.POST)
-    public ResponseEntity<Course> createCourse(@RequestBody Course course) {
+    public ResponseEntity<Course> createCourse(@Valid @RequestBody Course course) {
         Course result = courseService.createCourse(course);
         return ResponseEntity.ok(result);
     }
