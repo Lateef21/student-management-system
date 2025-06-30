@@ -19,13 +19,13 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @RequestMapping(value = "/course", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Course> createCourse(@Valid @RequestBody Course course) {
         Course result = courseService.createCourse(course);
         return ResponseEntity.ok(result);
     }
 
-    @RequestMapping(value = "/course", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Course>> listCourses() {
         ArrayList<Course> result = courseService.listCourses();
         return ResponseEntity.ok(result);
