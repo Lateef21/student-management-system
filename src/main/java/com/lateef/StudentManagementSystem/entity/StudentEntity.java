@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,10 @@ public class StudentEntity {
     @Column(nullable = false, unique = true)
     private String studentRegNo;
 
+    @NotBlank(message = "Student ID is required")
+    @Column(nullable = false, unique = true)
+    private String studentId;
+
     @NotNull(message = "Age is required")
     @Min(value = 1, message = "Age must be at least 1")
     @Column(nullable = false)
@@ -45,7 +50,8 @@ public class StudentEntity {
     private List<CourseEntity> courses = new ArrayList<>();
 
     public StudentEntity() {
-        this.studentRegNo = "SMS-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        this.studentRegNo = "SMS-" + RandomStringUtils.secure().nextNumeric(8);
+        this.studentId = RandomStringUtils.secure().nextNumeric(12);
     }
 
     public StudentEntity(String fullName, int age) {

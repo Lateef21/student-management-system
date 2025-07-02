@@ -25,24 +25,32 @@ public class CourseService {
         return course;
     }
 
-    public ArrayList<Course> listCourses() {
-        return new ArrayList<>(courses);
+    public List<Course> listCourses() {
+        List<CourseEntity> entities = courseRepository.findAll();
+        List<Course> courses = new ArrayList<>();
+        for (CourseEntity entity : entities) {
+            courses.add(CourseMapper.toModel(entity));
+        }
+        return courses;
     }
 
     public boolean deleteCourse(String code) {
-        return courses.removeIf(course -> course.getCode().equalsIgnoreCase(code));
+        CourseEntity entity = courseRepository.findByCodeIgnoreCase(code);
+        if (entity != null) {
+            courseRepository.delete(entity);
+            return true;
+        }
+        return false;
     }
 
     public Course updateCourse(String code, Course updatedCourse) {
-        for (Course course : courses) {
-            if (course.getCode().equalsIgnoreCase(code)) {
-                course.setName(updatedCourse.getName());
-                course.setCode(updatedCourse.getCode());
-                return course;
-            }
+        CourseEntity existingEntity = courseRepository.findByCodeIgnoreCase(code);
+        if (existingEntity != null) {
+            existingEntity.setName(updatedCourse.getName());
+            existingEntity.setCode(updatedCourse.getCode());
+            CourseEntity savedEntity = courseRepository.save(existingEntity);
+            return CourseMapper.toModel(savedEntity);
         }
         return null;
     }
-
-
 }

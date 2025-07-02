@@ -25,7 +25,7 @@ public class StudentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Student>> listStudents() {
-        ArrayList<Student> result = studentService.listStudents();
+        ArrayList<Student> result = (ArrayList<Student>) studentService.listStudents();
         return ResponseEntity.ok(result);
     }
 
@@ -48,6 +48,4 @@ public class StudentController {
             return ResponseEntity.status(404).body("Student not found.");
         }
     }
-
-
 }

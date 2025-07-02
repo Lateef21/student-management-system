@@ -37,36 +37,4 @@ public class Student {
         this.studentRegNo = "SMS/" + RandomStringUtils.insecure().nextNumeric(6);
         this.studentId = RandomStringUtils.secure().nextNumeric(10);
     }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public String getStudentRegNo() {
-        return studentRegNo;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public ArrayList<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
-    }
 }

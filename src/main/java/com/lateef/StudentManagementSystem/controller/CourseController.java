@@ -27,7 +27,7 @@ public class CourseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Course>> listCourses() {
-        ArrayList<Course> result = courseService.listCourses();
+        ArrayList<Course> result = (ArrayList<Course>) courseService.listCourses();
         return ResponseEntity.ok(result);
     }
 

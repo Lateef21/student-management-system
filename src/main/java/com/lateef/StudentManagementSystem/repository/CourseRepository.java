@@ -8,5 +8,7 @@ import java.util.UUID;
 public interface CourseRepository extends JpaRepository<CourseEntity, UUID> {
     boolean existsByCode(String code);
     CourseEntity findByCode(String code);
+
+    CourseEntity findByCodeIgnoreCase(String code);
 }
 

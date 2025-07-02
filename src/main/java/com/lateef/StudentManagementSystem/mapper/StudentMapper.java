@@ -10,7 +10,6 @@ public class StudentMapper {
         entity.setFullName(model.getFullName());
         entity.setAge(model.getAge());
         entity.setStudentRegNo(model.getStudentRegNo());
-        // courses can be mapped later if needed
         return entity;
     }
 
@@ -19,7 +18,7 @@ public class StudentMapper {
         model.setFullName(entity.getFullName());
         model.setAge(entity.getAge());
         model.setStudentRegNo(entity.getStudentRegNo());
-        // studentId can be set as entity.getId().toString() if needed
+        model.setStudentId(entity.getStudentId());
         return model;
     }
 }

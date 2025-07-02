@@ -10,7 +10,6 @@ public class CourseMapper {
         entity.setName(model.getName());
         entity.setCode(model.getCode());
         entity.setUnit(model.getUnit());
-        // students mapping can be added if needed
         return entity;
     }
 
@@ -19,7 +18,6 @@ public class CourseMapper {
         model.setName(entity.getName());
         model.setCode(entity.getCode());
         model.setUnit(entity.getUnit());
-        // students mapping can be added if needed
         return model;
     }
 }

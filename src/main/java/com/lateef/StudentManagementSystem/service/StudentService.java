@@ -1,43 +1,61 @@
 package com.lateef.StudentManagementSystem.service;
 
+import com.lateef.StudentManagementSystem.entity.StudentEntity;
+import com.lateef.StudentManagementSystem.mapper.StudentMapper;
 import com.lateef.StudentManagementSystem.model.Student;
+import com.lateef.StudentManagementSystem.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class StudentService {
-    private ArrayList<Student> students = null;
+    private final StudentRepository studentRepository;
 
-    public Student createStudent(Student student) {
-
-        if(students == null){
-            students = new ArrayList<>();
-        }
-
-        students.add(student);
-
-        return student;
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
-    public ArrayList<Student> listStudents() {
+    public Student createStudent(Student student) {
+        // Create a new StudentEntity using the mapper
+        StudentEntity entity = StudentMapper.toEntity(student);
+        // studentRegNo will be auto-generated in the entity constructor if null
+        if (entity.getStudentRegNo() == null || entity.getStudentRegNo().isBlank()) {
+            entity.setStudentRegNo("SMS-" + java.util.UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        }
+        entity = studentRepository.save(entity);
+        return StudentMapper.toModel(entity);
+    }
+
+    public List<Student> listStudents() {
+        List<StudentEntity> entities = studentRepository.findAll();
+        List<Student> students = new ArrayList<>();
+        for (StudentEntity entity : entities) {
+            students.add(StudentMapper.toModel(entity));
+        }
         return students;
     }
 
     public boolean deleteStudent(String studentId) {
-        return students.removeIf(student -> student.getStudentId().equals(studentId));
+        StudentEntity entity = studentRepository.findByStudentId(studentId);
+        if (entity != null) {
+            studentRepository.delete(entity);
+            return true;
+        }
+        return false;
     }
 
     public Student updateStudent(String studentId, Student updatedStudent) {
-        for (Student student : students) {
-            if (student.getStudentId().equalsIgnoreCase(studentId)) {
-                student.setFullName(updatedStudent.getFullName());
-                student.setAge(updatedStudent.getAge());
-                return student;
-            }
+        StudentEntity entity = studentRepository.findByStudentId(studentId);
+        if (entity != null) {
+            entity.setFullName(updatedStudent.getFullName());
+            entity.setAge(updatedStudent.getAge());
+            StudentEntity saved = studentRepository.save(entity);
+            return StudentMapper.toModel(saved);
         }
         return null;
     }
-
-
 }
+
+
