@@ -49,6 +49,7 @@ public class StudentEntity {
     )
     private List<CourseEntity> courses = new ArrayList<>();
 
+
     public StudentEntity() {
         this.studentRegNo = "SMS-" + RandomStringUtils.secure().nextNumeric(8);
         this.studentId = RandomStringUtils.secure().nextNumeric(12);
@@ -59,5 +60,7 @@ public class StudentEntity {
         this.fullName = fullName;
         this.age = age;
     }
+
+
 }
 

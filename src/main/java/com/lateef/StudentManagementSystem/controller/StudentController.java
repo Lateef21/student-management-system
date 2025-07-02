@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -48,4 +49,17 @@ public class StudentController {
             return ResponseEntity.status(404).body("Student not found.");
         }
     }
+
+    @PostMapping("/{id}/assign-courses")
+    public ResponseEntity<?> assignCourses(
+            @PathVariable("id") String studentId,
+            @RequestBody List<String> courseCodes) {
+        try {
+            Student result = studentService.assignCourses(studentId, courseCodes);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
