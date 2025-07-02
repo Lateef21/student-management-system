@@ -2,6 +2,7 @@ package com.lateef.StudentManagementSystem.mapper;
 
 import com.lateef.StudentManagementSystem.entity.CourseEntity;
 import com.lateef.StudentManagementSystem.model.Course;
+import java.util.stream.Collectors;
 
 public class CourseMapper {
 
@@ -18,6 +19,15 @@ public class CourseMapper {
         model.setName(entity.getName());
         model.setCode(entity.getCode());
         model.setUnit(entity.getUnit());
+
+        if (entity.getStudents() != null && !entity.getStudents().isEmpty()) {
+            model.setStudents(
+                    entity.getStudents().stream()
+                            .map(StudentMapper::toModel)
+                            .collect(Collectors.toCollection(java.util.ArrayList::new))
+            );
+        }
+
         return model;
     }
 }
