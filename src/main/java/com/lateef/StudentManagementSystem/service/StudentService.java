@@ -89,6 +89,26 @@ public class StudentService {
         StudentEntity saved = studentRepository.save(entity);
         return StudentMapper.toModel(saved);
     }
+
+    public Student removeCourses(String studentId, List<String> courseCodes) {
+        StudentEntity student = studentRepository.findByStudentId(studentId);
+        if (student == null) {
+            throw new RuntimeException("Student not found");
+        }
+
+        List<CourseEntity> currentCourses = student.getCourses();
+        if (currentCourses == null || currentCourses.isEmpty()) {
+            throw new RuntimeException("Student is not enrolled in any courses");
+        }
+
+        currentCourses.removeIf(course -> courseCodes.contains(course.getCode()));
+
+        student.setCourses(currentCourses);
+        StudentEntity saved = studentRepository.save(student);
+        return StudentMapper.toModel(saved);
+    }
+
+
 }
 
 

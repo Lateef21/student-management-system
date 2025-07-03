@@ -62,4 +62,16 @@ public class StudentController {
         }
     }
 
+    @PutMapping("/{id}/remove-courses")
+    public ResponseEntity<?> removeCoursesFromStudent(
+            @PathVariable("id") String studentId,
+            @RequestBody List<String> courseCodes) {
+        try {
+            Student updatedStudent = studentService.removeCourses(studentId, courseCodes);
+            return ResponseEntity.ok(updatedStudent);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
