@@ -17,7 +17,6 @@ import java.util.UUID;
 @Table(name = "students")
 @Getter
 @Setter
-@ToString
 public class StudentEntity {
 
     @Id

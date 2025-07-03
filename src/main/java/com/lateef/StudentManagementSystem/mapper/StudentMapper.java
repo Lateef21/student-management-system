@@ -1,8 +1,12 @@
 package com.lateef.StudentManagementSystem.mapper;
 
+import com.lateef.StudentManagementSystem.entity.CourseEntity;
 import com.lateef.StudentManagementSystem.entity.StudentEntity;
+import com.lateef.StudentManagementSystem.model.Course;
 import com.lateef.StudentManagementSystem.model.Student;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentMapper {
@@ -23,12 +27,26 @@ public class StudentMapper {
         model.setStudentId(entity.getStudentId());
 
         if (entity.getCourses() != null && !entity.getCourses().isEmpty()) {
-            model.setCourses(
-                    entity.getCourses()
-                            .stream()
-                            .map(CourseMapper::toModel)
-                            .collect(Collectors.toCollection(java.util.ArrayList::new))
-            );
+
+            List<CourseEntity> courseEntities = entity.getCourses();
+
+            ArrayList<Course> courses = new ArrayList<>();
+
+            for(CourseEntity courseEntity: courseEntities) {
+                courseEntity.setStudents(null);
+                Course course = CourseMapper.toModel(courseEntity);
+
+                courses.add(course);
+            }
+
+            model.setCourses(courses);
+
+//            model.setCourses(
+//                    entity.getCourses()
+//                            .stream()
+//                            .map(CourseMapper::toModel)
+//                            .collect(Collectors.toCollection(java.util.ArrayList::new))
+//            );
         }
         return model;
     }

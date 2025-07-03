@@ -51,6 +51,15 @@ public class CourseController {
         }
     }
 
+    @GetMapping("/{code}/students")
+    public ResponseEntity<?> getStudentsForCourse(@PathVariable("code") String courseCode) {
+        try {
+            Course result = courseService.getCourseWithStudents(courseCode);
+            return ResponseEntity.ok(result.getStudents());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(404).body(e.getMessage());
+        }
+    }
 
 
 }

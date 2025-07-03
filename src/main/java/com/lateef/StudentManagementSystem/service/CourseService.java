@@ -53,4 +53,14 @@ public class CourseService {
         }
         return null;
     }
+
+    public Course getCourseWithStudents(String courseCode) {
+        CourseEntity entity = courseRepository.findByCode(courseCode);
+        if (entity == null) {
+            throw new RuntimeException("Course not found");
+        }
+
+        return CourseMapper.toModel(entity);
+    }
+
 }

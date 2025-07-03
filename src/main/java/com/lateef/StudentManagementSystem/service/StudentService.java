@@ -6,6 +6,7 @@ import com.lateef.StudentManagementSystem.mapper.StudentMapper;
 import com.lateef.StudentManagementSystem.model.Student;
 import com.lateef.StudentManagementSystem.repository.CourseRepository;
 import com.lateef.StudentManagementSystem.repository.StudentRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,12 +14,16 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class StudentService {
     private final StudentRepository studentRepository;
+    private final CourseRepository courseRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(StudentRepository studentRepository,
+                          CourseRepository courseRepository) {
         this.studentRepository = studentRepository;
+        this.courseRepository = courseRepository;
     }
 
     public Student createStudent(Student student) {
@@ -67,16 +72,17 @@ public class StudentService {
             throw new RuntimeException("Student not found");
         }
 
-        List<CourseEntity> courses = courseCodes.stream()
+        ArrayList<CourseEntity> courses = courseCodes.stream()
                 .map(code -> {
-                    CourseRepository courseRepository = null;
                     CourseEntity course = courseRepository.findByCode(code);
                     if (course == null) {
                         throw new RuntimeException("Course with code " + code + " not found");
                     }
                     return course;
                 })
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(java.util.ArrayList::new));
+
+        log.info("COURSES: {}", courses);
 
         entity.setCourses(courses);
 
