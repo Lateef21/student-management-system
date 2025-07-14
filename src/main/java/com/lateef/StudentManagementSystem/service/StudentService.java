@@ -84,7 +84,11 @@ public class StudentService {
 
         log.info("COURSES: {}", courses);
 
-        entity.setCourses(courses);
+        List<CourseEntity> dBCourses = entity.getCourses();
+
+        dBCourses.addAll(courses);
+
+        entity.setCourses(dBCourses);
 
         StudentEntity saved = studentRepository.save(entity);
         return StudentMapper.toModel(saved);
